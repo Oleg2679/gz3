@@ -1,76 +1,781 @@
 <!DOCTYPE html>
-<html lang="ru" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/src/assets/education-icon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Каталог образовательных программ для участников СВО</title>
-    <script type="module" src="/src/main.jsx"></script>
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-      
-      body {
-        font-family: 'Inter', sans-serif;
-        overflow-x: hidden;
-      }
-      
-      .rainbow-gradient-bg {
-        background: linear-gradient(45deg, #FF3B30, #FF9500, #FFCC00, #4CD964, #5AC8FA, #007AFF, #5856D6);
-        background-size: 200% 200%;
-        animation: rainbow-gradient 15s ease infinite;
-      }
-      
-      .dark .rainbow-gradient-bg {
-        background: linear-gradient(45deg, #ff6b6b, #ff9e4a, #ffd166, #5de06c, #6ee7ff, #4a9eff, #8a88ff);
-        background-size: 200% 200%;
-        animation: rainbow-gradient 15s ease infinite;
-      }
-      
-      .rainbow-text {
-        background: linear-gradient(45deg, #FF3B30, #FF9500, #FFCC00, #4CD964, #5AC8FA, #007AFF, #5856D6);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-      
-      .section-indicator {
-        height: 5px;
-        position: fixed;
-        top: 0;
-        left: 0;
-        background: linear-gradient(90deg, #FF3B30, #FF9500, #FFCC00, #4CD964, #5AC8FA, #007AFF, #5856D6);
-        z-index: 9999;
-        transition: width 0.3s ease;
-      }
-      
-      .sidebar-open {
-        transform: translateX(0);
-        opacity: 1;
-        visibility: visible;
-      }
-      
-      .sidebar-closed {
-        transform: translateX(-100%);
-        opacity: 0;
-        visibility: hidden;
-      }
-      
-      .accordion-content {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease-out;
-      }
-      
-      .accordion-active .accordion-content {
-        max-height: 500px;
-      }
-      
-      .dark .dark\:bg-opacity-90 {
-        --tw-bg-opacity: 0.9;
-      }
-    </style>
-  </head>
-  <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
-    <div id="root"></div>
-  </body>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Образовательные программы для участников СВО</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Образовательные программы для участников СВО</h1>
+            <p>Каталог востребованных профессий и образовательных программ</p>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="#about">О программе</a></li>
+            <li><a href="#professions">10 ключевых направлений</a></li>
+            <li><a href="#selection">Процесс выбора программы</a></li>
+            <li><a href="#advantages">Преимущества обучения</a></li>
+            <li><a href="#consultation">Как получить консультацию</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <!-- Section 1: О программе -->
+        <section id="about" class="main-section">
+            <h2>О программе</h2>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-button">
+                        <h3>Цели и задачи (основа каталога)</h3>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="sub-accordion">
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Актуализированный подход к отбору ТОП-10 укрупненных профессий
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Каталог включает 10 ключевых направлений, отобранных на основе анализа рынка труда и прогнозов кадрового обеспечения до 2030 года.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Учет потребностей рынка труда и кадрового дефицита
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Все профессии включены в каталог с учетом реального дефицита кадров на рынке труда. По данным РБК, кадровый дефицит составляет 1,5 млн человек сейчас и прогнозируется до 2 млн к 2030 году.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Интеграция с результатами профориентационного тестирования
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Система позволяет подобрать образовательные программы на основе результатов профориентационного тестирования, что повышает эффективность выбора профессии.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-button">
+                        <h3>Законодательная база (правовое обоснование)</h3>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="sub-accordion">
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Льготы для участников СВО при поступлении
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Участники СВО имеют право на льготы при поступлении в образовательные учреждения, включая предоставление бюджетных мест и упрощенный порядок зачисления.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Отдельные квоты в СПО и ВО
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Для участников СВО выделены отдельные квоты в системе среднего профессионального и высшего образования.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Право на зачисление в первоочередном порядке
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Участники СВО имеют право на зачисление в первоочередном порядке при равенстве результатов.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Обязательное применение профессиональных стандартов работодателями
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Работодатели обязаны применять профессиональные стандарты при найме и оценке персонала, что гарантирует востребованность полученных навыков.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: 10 ключевых направлений -->
+        <section id="professions" class="main-section">
+            <h2>10 ключевых направлений профессий (макрогруппы)</h2>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-button">
+                        <h3>IT и цифровые технологии</h3>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="sub-accordion">
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Базовые категории
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <ul>
+                                        <li>Разработка ПО</li>
+                                        <li>Информационная безопасность</li>
+                                        <li>Системное администрирование</li>
+                                        <li>Аналитика данных</li>
+                                        <li>Робототехника</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Перспективные профессии
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <ul>
+                                        <li>Программист</li>
+                                        <li>Системный администратор</li>
+                                        <li>Аналитик данных</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Образовательные программы СПО/ВО
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Доступны программы среднего профессионального и высшего образования по различным специализациям в IT-сфере.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-button">
+                        <h3>Энергетика и электросети</h3>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="sub-accordion">
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Базовые категории
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <ul>
+                                        <li>Электроэнергетика</li>
+                                        <li>Теплоэнергетика</li>
+                                        <li>Возобновляемая энергетика</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Специализации
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <ul>
+                                        <li>Эксплуатация оборудования</li>
+                                        <li>Релейная защита</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Профессии для рынка труда
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Профессии в энергетике обеспечивают высокую востребованность на рынке труда.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-button">
+                        <h3>Строительство, архитектура и геоданные</h3>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="sub-accordion">
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Базовые категории
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <ul>
+                                        <li>Строительство зданий</li>
+                                        <li>Архитектура</li>
+                                        <li>Геодезия</li>
+                                        <li>Природообустройство</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Востребованные специальности
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <ul>
+                                        <li>Проектирование</li>
+                                        <li>Сметное ценообразование</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Практические навыки
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Программы включают практическую подготовку с использованием современных технологий и оборудования.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-button">
+                        <h3>Машиностроение и производственные технологии</h3>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="sub-accordion">
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Базовые категории
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Включает все виды машиностроительных специализаций: от станкостроения до авиастроения.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Перспективные профессии
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Оператор станков с ЧПУ, инженер-конструктор, технолог производства.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Образовательные программы
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Широкий выбор программ СПО и ВО с возможностью получения квалификаций в современных технологиях.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-button">
+                        <h3>Транспорт и беспилотные системы</h3>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="sub-accordion">
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Базовые категории
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Транспортное машиностроение, логистика, беспилотные транспортные системы.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Перспективные профессии
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Специалист по беспилотным системам, логист, транспортный инженер.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Образовательные программы
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Программы подготовки специалистов для транспортной отрасли с использованием современных технологий.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-button">
+                        <h3>Нефтегазовая промышленность и недропользование</h3>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="sub-accordion">
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Базовые категории
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Разработка месторождений, переработка, транспортировка, недропользование.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Перспективные профессии
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Нефтяник, геолог, специалист по добыче, инженер по переработке.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Образовательные программы
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Специализированные программы подготовки для нефтегазовой отрасли.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-button">
+                        <h3>Здравоохранение и биотехнологии</h3>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="sub-accordion">
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Базовые категории
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Медицина, фармацевтика, биотехнологии, лабораторная диагностика.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Перспективные профессии
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Врач, фармацевт, биотехнолог, медицинская сестра.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Образовательные программы
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Программы подготовки медицинских специалистов с современными подходами к обучению.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-button">
+                        <h3>Агро, ветеринария и пищевые технологии</h3>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="sub-accordion">
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Базовые категории
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Сельское хозяйство, ветеринария, пищевая промышленность, переработка.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Перспективные профессии
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Агроном, ветеринар, технолог пищевого производства, механизатор.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Образовательные программы
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Программы подготовки специалистов для агропромышленного комплекса.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-button">
+                        <h3>Образование и гуманитарные направления</h3>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="sub-accordion">
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Базовые категории
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Педагогика, история, филология, психология, социология.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Перспективные профессии
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Учитель, воспитатель, психолог, социальный работник.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Образовательные программы
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Программы подготовки педагогических и гуманитарных специалистов.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-button">
+                        <h3>Право, управление и коммуникации</h3>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="sub-accordion">
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Базовые категории
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Юриспруденция, государственное и муниципальное управление, связи и коммуникации.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Перспективные профессии
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Юрист, менеджер, специалист по связям с общественностью, управленец.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Образовательные программы
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Программы подготовки специалистов в области права, управления и коммуникаций.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Процесс выбора программы -->
+        <section id="selection" class="main-section">
+            <h2>Процесс выбора программы</h2>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-button">
+                        <h3>Этапы подбора образовательной программы</h3>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="sub-accordion">
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Определение укрупненной группы после профориентационного тестирования
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Первый шаг - пройти профориентационное тестирование, которое поможет определить подходящую макрогруппу профессий.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Выбор уровня образования (СПО/ВО) в зависимости от базового образования
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>В зависимости от наличия 9 или 11 классов образования выбирается уровень подготовки: среднее профессиональное или высшее.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Фильтрация по параметрам: регион, форма обучения, госучреждения
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Система позволяет отфильтровать программы по региону, форме обучения и типу образовательного учреждения.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Получение списка подходящих учебных заведений
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>После выбора параметров система формирует список подходящих образовательных учреждений с контактной информацией.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-button">
+                        <h3>Учет индивидуальных особенностей</h3>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="sub-accordion">
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Базовый уровень образования участника (9 или 11 классов)
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Система учитывает уровень базового образования для подбора соответствующих образовательных программ.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Предпочтения по форме обучения
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Учитываются предпочтения по очной, заочной или очно-заочной форме обучения.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Результаты психолого-компетентностного тестирования
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Результаты тестирования помогают подобрать наиболее подходящие профессии с учетом личных качеств и склонностей.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Региональная привязка
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Система учитывает регион проживания для подбора ближайших образовательных учреждений.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Преимущества обучения -->
+        <section id="advantages" class="main-section">
+            <h2>Преимущества обучения</h2>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-button">
+                        <h3>Гарантированные льготы</h3>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="sub-accordion">
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Бюджетные места в государственных вузах
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Участники СВО имеют право на поступление на бюджетные места в государственных образовательных учреждениях.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Квоты для участников СВО
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Для участников СВО выделены отдельные квоты при поступлении в образовательные учреждения.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Упрощенный порядок зачисления
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Упрощенная процедура поступления с минимальным комплектом документов.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-button">
+                        <h3>Трудоустройство после обучения</h3>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="sub-accordion">
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Востребованность профессий на рынке труда
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Все профессии в каталоге являются востребованными на рынке труда, что обеспечивает высокие шансы на трудоустройство.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Кадровый дефицит по отраслям (1,5 млн человек по данным РБК)
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>По данным РБК, на рынке труда наблюдается дефицит кадров в размере 1,5 млн человек, что создает высокие шансы на трудоустройство.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Прогнозы дефицита к 2030 году (2 млн человек)
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Прогнозы показывают, что к 2030 году дефицит кадров увеличится до 2 млн человек, что гарантирует стабильность профессии.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-button">
+                        <h3>Дополнительные возможности</h3>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="sub-accordion">
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Индивидуальные учебные планы для лиц с ОВЗ
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Для лиц с ограниченными возможностями здоровья разрабатываются индивидуальные учебные планы.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Различные формы обучения (очная, заочная, очно-заочная)
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Возможность выбора формы обучения в зависимости от личных обстоятельств.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Сроки получения образования в разных форматах
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Гибкие сроки получения образования в зависимости от выбранной формы обучения.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Как получить консультацию -->
+        <section id="consultation" class="main-section">
+            <h2>Как получить консультацию</h2>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-button">
+                        <h3>Поиск подходящей программы</h3>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="sub-accordion">
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Алгоритм работы с каталогом образовательных программ
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <ol>
+                                        <li>Пройдите профориентационное тестирование</li>
+                                        <li>Определите подходящую макрогруппу профессий</li>
+                                        <li>Выберите уровень образования (СПО/ВО)</li>
+                                        <li>Укажите регион и предпочтения по форме обучения</li>
+                                        <li>Получите список подходящих программ</li>
+                                        <li>Ознакомьтесь с требованиями и условиями</li>
+                                        <li>Подайте документы в выбранное учреждение</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Подбор вуза по федеральному округу
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Система позволяет подобрать образовательные учреждения по федеральному округу, что упрощает поиск ближайших вузов.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Ссылки на официальные сайты образовательных учреждений
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Для каждого образовательного учреждения предоставляются ссылки на официальные сайты с дополнительной информацией.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-button">
+                        <h3>Документы для поступления</h3>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="sub-accordion">
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Требования к зачислению в разные типы учреждений
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Требования могут различаться в зависимости от типа образовательного учреждения и уровня образования.</p>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Необходимые документы для участников СВО
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <ul>
+                                        <li>Документ об образовании</li>
+                                        <li>Документ, удостоверяющий личность</li>
+                                        <li>Документ, подтверждающий участие в СВО</li>
+                                        <li>6 фотографий 3х4</li>
+                                        <li>Медицинская справка (при необходимости)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="sub-accordion-item">
+                                <button class="sub-accordion-button">
+                                    Сроки подачи заявок
+                                </button>
+                                <div class="sub-accordion-content">
+                                    <p>Сроки подачи документов различаются в зависимости от образовательного учреждения и уровня образования. Обычно прием документов начинается в июне и заканчивается в августе.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Образовательные программы для участников СВО. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>
