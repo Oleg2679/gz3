@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог образовательных программ для участников СВО</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .rainbow-gradient-bg {
+            background: linear-gradient(45deg, #FF3B30, #FF9500, #FFCC00, #4CD964, #5AC8FA, #007AFF, #5856D6);
+            background-size: 200% 200%;
+            animation: rainbow-gradient 15s ease infinite;
+        }
+        
+        @keyframes rainbow-gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .section-indicator {
+            height: 5px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: linear-gradient(90deg, #FF3B30, #FF9500, #FFCC00, #4CD964, #5AC8FA, #007AFF, #5856D6);
+            z-index: 9999;
+            transition: width 0.3s ease;
+        }
+        
+        .rainbow-text {
+            background: linear-gradient(45deg, #FF3B30, #FF9500, #FFCC00, #4CD964, #5AC8FA, #007AFF, #5856D6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hover-glow {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-glow:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .accordion-active .accordion-content {
+            max-height: 500px;
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <div class="section-indicator" id="section-indicator" style="width: 0%"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-200">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-r from-red-500 to-purple-600 flex items-center justify-center">
+                    <span class="text-white font-bold text-lg">S</span>
+                </div>
+                <h1 class="text-xl font-bold rainbow-text">SVO Образование</h1>
+            </div>
+            
+            <div class="hidden lg:flex space-x-1">
+                <a href="#home" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">Главная</a>
+                <a href="#catalog" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">Каталог</a>
+                <a href="#personalized" class="px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors">Подбор</a>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <button id="darkModeToggle" class="p-2 rounded-full bg-gray-200 text-gray-700 hover:bg-gray-300">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="menuToggle" class="p-2 rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300 lg:hidden">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-gray-200">
+            <div class="p-4 space-y-3">
+                <a href="#home" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">Главная</a>
+                <a href="#catalog" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">Каталог</a>
+                <a href="#personalized" class="block px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">Подбор</a>
+                
+                <div class="pt-3 border-t border-gray-200">
+                    <h3 class="px-4 py-2 font-semibold text-gray-700">Профессиональные группы</h3>
+                    <a href="#it" class="block px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100">IT и цифровые технологии</a>
+                    <a href="#energy" class="block px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100">Энергетика и электросети</a>
+                    <a href="#construction" class="block px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100">Строительство</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Spacer for fixed navigation -->
+    <div class="h-16"></div>
+    
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden rainbow-gradient-bg">
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute -top-40 -right-40 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-white/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                    Каталог образовательных программ для участников СВО
+                </h1>
+                
+                <p class="text-xl sm:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
+                    Откройте новые возможности для профессионального роста и развития с нашим инновационным каталогом образовательных программ
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                    <a href="#catalog" class="px-8 py-4 bg-white text-gray-900 font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center space-x-2">
+                        <i class="fas fa-book"></i>
+                        <span>Изучить программы</span>
+                    </a>
+                    
+                    <div class="flex items-center space-x-6 text-white/90">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-award text-yellow-300"></i>
+                            <span>100+ программ</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-globe text-blue-300"></i>
+                            <span>По всей России</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                        <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-book text-white"></i>
+                        </div>
+                        <h3 class="text-white font-semibold text-lg mb-2">Разнообразие направлений</h3>
+                        <p class="text-white/80">10 ключевых профессиональных групп для выбора</p>
+                    </div>
+                    
+                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                        <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-award text-white"></i>
+                        </div>
+                        <h3 class="text-white font-semibold text-lg mb-2">Качественное образование</h3>
+                        <p class="text-white/80">Программы от ведущих вузов и колледжей</p>
+                    </div>
+                    
+                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                        <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-globe text-white"></i>
+                        </div>
+                        <h3 class="text-white font-semibold text-lg mb-2">Удобный формат</h3>
+                        <p class="text-white/80">Очно, заочно и в онлайн-формате</p>
+                    </div>
+                </div>
+                
+                <div class="animate-bounce">
+                    <i class="fas fa-chevron-down text-white text-2xl"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Catalog Section -->
+    <section id="catalog" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4 rainbow-text">
+                    Каталог образовательных программ
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Выберите направление, которое соответствует вашим интересам и целям. 
+                    Мы собрали лучшие образовательные программы для участников СВО.
+                </p>
+            </div>
+            
+            <div class="mb-12 bg-white rounded-2xl shadow-lg p-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="relative">
+                        <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        <input type="text" placeholder="Поиск по направлениям..." class="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                    
+                    <div class="relative">
+                        <i class="fas fa-filter absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        <select class="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none">
+                            <option>Все уровни образования</option>
+                            <option>СПО</option>
+                            <option>Высшее образование</option>
+                        </select>
+                    </div>
+                    
+                    <div class="relative">
+                        <i class="fas fa-map-marker-alt absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        <select class="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none">
+                            <option>Все регионы</option>
+                            <option>Москва</option>
+                            <option>Санкт-Петербург</option>
+                            <option>Регионы</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="space-y-6">
+                <!-- Professional Group 1: IT -->
+                <div class="rounded-2xl overflow-hidden shadow-lg">
+                    <div class="p-6 text-left flex items-center justify-between bg-red-50 hover:bg-red-100 transition-colors duration-200 cursor-pointer accordion-toggle" data-target="it-content">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0 bg-red-500">
+                                1
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900">IT и цифровые технологии</h3>
+                                <p class="text-gray-600 mt-1">Программы по программированию, кибербезопасности, искусственному интеллекту и цифровой трансформации</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-sm text-gray-500">4 специальности</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    
+                    <div id="it-content" class="accordion-content">
+                        <div class="border-t border-gray-200 p-6">
+                            <div class="mb-6">
+                                <h4 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                                    <i class="fas fa-book mr-2"></i> Специальности
+                                </h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="p-4 rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-200">
+                                        <div class="flex justify-between items-start">
+                                            <h5 class="font-medium text-gray-900">Программирование</h5>
+                                            <span class="text-sm px-2 py-1 bg-gray-100 text-gray-700 rounded">СПО/ВО</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600 mt-2">Срок обучения: 2-4 года</p>
+                                    </div>
+                                    
+                                    <div class="p-4 rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-200">
+                                        <div class="flex justify-between items-start">
+                                            <h5 class="font-medium text-gray-900">Кибербезопасность</h5>
+                                            <span class="text-sm px-2 py-1 bg-gray-100 text-gray-700 rounded">ВО</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600 mt-2">Срок обучения: 4 года</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                                    <i class="fas fa-university mr-2"></i> Учебные заведения
+                                </h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 rounded-full text-sm bg-white text-gray-700 border border-gray-300">МФТИ</span>
+                                    <span class="px-3 py-1 rounded-full text-sm bg-white text-gray-700 border border-gray-300">МГТУ им. Баумана</span>
+                                    <span class="px-3 py-1 rounded-full text-sm bg-white text-gray-700 border border-gray-300">СПбПУ</span>
+                                    <span class="px-3 py-1 rounded-full text-sm bg-white text-gray-700 border border-gray-300">НИУ ВШЭ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Professional Group 2: Energy -->
+                <div class="rounded-2xl overflow-hidden shadow-lg">
+                    <div class="p-6 text-left flex items-center justify-between bg-orange-50 hover:bg-orange-100 transition-colors duration-200 cursor-pointer accordion-toggle" data-target="energy-content">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0 bg-orange-500">
+                                2
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900">Энергетика и электросети</h3>
+                                <p class="text-gray-600 mt-1">Программы по электротехнике, энергетике, возобновляемым источникам энергии</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-sm text-gray-500">4 специальности</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    
+                    <div id="energy-content" class="accordion-content">
+                        <div class="border-t border-gray-200 p-6">
+                            <div class="mb-6">
+                                <h4 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                                    <i class="fas fa-book mr-2"></i> Специальности
+                                </h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="p-4 rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-200">
+                                        <div class="flex justify-between items-start">
+                                            <h5 class="font-medium text-gray-900">Электротехника</h5>
+                                            <span class="text-sm px-2 py-1 bg-gray-100 text-gray-700 rounded">СПО/ВО</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600 mt-2">Срок обучения: 2-4 года</p>
+                                    </div>
+                                    
+                                    <div class="p-4 rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-200">
+                                        <div class="flex justify-between items-start">
+                                            <h5 class="font-medium text-gray-900">Энергетика</h5>
+                                            <span class="text-sm px-2 py-1 bg-gray-100 text-gray-700 rounded">ВО</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600 mt-2">Срок обучения: 4 года</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                                    <i class="fas fa-university mr-2"></i> Учебные заведения
+                                </h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 rounded-full text-sm bg-white text-gray-700 border border-gray-300">НИУ МЭИ</span>
+                                    <span class="px-3 py-1 rounded-full text-sm bg-white text-gray-700 border border-gray-300">СПбГЭТУ "ЛЭТИ"</span>
+                                    <span class="px-3 py-1 rounded-full text-sm bg-white text-gray-700 border border-gray-300">КГЭУ</span>
+                                    <span class="px-3 py-1 rounded-full text-sm bg-white text-gray-700 border border-gray-300">ДГТУ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Professional Group 3: Construction -->
+                <div class="rounded-2xl overflow-hidden shadow-lg">
+                    <div class="p-6 text-left flex items-center justify-between bg-yellow-50 hover:bg-yellow-100 transition-colors duration-200 cursor-pointer accordion-toggle" data-target="construction-content">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0 bg-yellow-500">
+                                3
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900">Строительство, архитектура и геоданные</h3>
+                                <p class="text-gray-600 mt-1">Программы по архитектуре, строительству, геодезии и управлению проектами</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-sm text-gray-500">4 специальности</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    
+                    <div id="construction-content" class="accordion-content">
+                        <div class="border-t border-gray-200 p-6">
+                            <div class="mb-6">
+                                <h4 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                                    <i class="fas fa-book mr-2"></i> Специальности
+                                </h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="p-4 rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-200">
+                                        <div class="flex justify-between items-start">
+                                            <h5 class="font-medium text-gray-900">Архитектура</h5>
+                                            <span class="text-sm px-2 py-1 bg-gray-100 text-gray-700 rounded">ВО</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600 mt-2">Срок обучения: 5 лет</p>
+                                    </div>
+                                    
+                                    <div class="p-4 rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-200">
+                                        <div class="flex justify-between items-start">
+                                            <h5 class="font-medium text-gray-900">Промышленное строительство</h5>
+                                            <span class="text-sm px-2 py-1 bg-gray-100 text-gray-700 rounded">СПО/ВО</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600 mt-2">Срок обучения: 2-4 года</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                                    <i class="fas fa-university mr-2"></i> Учебные заведения
+                                </h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 rounded-full text-sm bg-white text-gray-700 border border-gray-300">МГСУ</span>
+                                    <span class="px-3 py-1 rounded-full text-sm bg-white text-gray-700 border border-gray-300">СПбГАСУ</span>
+                                    <span class="px-3 py-1 rounded-full text-sm bg-white text-gray-700 border border-gray-300">НИУ МГСУ</span>
+                                    <span class="px-3 py-1 rounded-full text-sm bg-white text-gray-700 border border-gray-300">Казанский ГАСУ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 bg-white rounded-2xl shadow-lg p-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                    <i class="fas fa-map-marker-alt mr-2"></i> Карта образовательных учреждений
+                </h3>
+                <div class="bg-gray-100 rounded-xl h-96 flex items-center justify-center border-2 border-dashed border-gray-300">
+                    <div class="text-center">
+                        <i class="fas fa-map-marker-alt mx-auto text-gray-400 mb-4 text-4xl"></i>
+                        <p class="text-gray-600">Интерактивная карта образовательных учреждений</p>
+                        <p class="text-gray-500 text-sm mt-2">Выберите регион для просмотра доступных программ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Personalized Section -->
+    <section id="personalized" class="py-16 bg-gradient-to-br from-gray-50 to-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4 rainbow-text">
+                    Персональный подбор программ
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Пройдите короткий тест, чтобы получить персональные рекомендации по образовательным программам
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-8">
+                <div class="text-center mb-8">
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-clipboard-list text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">
+                        Пройдите профориентационный тест
+                    </h3>
+                    <p class="text-gray-600">
+                        Ответьте на несколько вопросов, чтобы получить подборку программ, соответствующих вашим интересам
+                    </p>
+                </div>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="font-semibold text-gray-900 mb-4">Какая область деятельности вам интересна?</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <button class="p-4 text-left rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-md transition-all duration-200 flex items-start space-x-3">
+                                <i class="fas fa-laptop text-blue-500 mt-1"></i>
+                                <span class="font-medium text-gray-900">Технологии и инновации</span>
+                                <i class="fas fa-arrow-right ml-auto text-gray-400 mt-1"></i>
+                            </button>
+                            <button class="p-4 text-left rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-md transition-all duration-200 flex items-start space-x-3">
+                                <i class="fas fa-building text-blue-500 mt-1"></i>
+                                <span class="font-medium text-gray-900">Строительство и инженерия</span>
+                                <i class="fas fa-arrow-right ml-auto text-gray-400 mt-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold text-gray-900 mb-4">Какой уровень образования вы хотите получить?</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <button class="p-4 text-left rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-md transition-all duration-200 flex items-start space-x-3">
+                                <i class="fas fa-graduation-cap text-blue-500 mt-1"></i>
+                                <span class="font-medium text-gray-900">Среднее профессиональное (колледж)</span>
+                                <i class="fas fa-arrow-right ml-auto text-gray-400 mt-1"></i>
+                            </button>
+                            <button class="p-4 text-left rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-md transition-all duration-200 flex items-start space-x-3">
+                                <i class="fas fa-user-graduate text-blue-500 mt-1"></i>
+                                <span class="font-medium text-gray-900">Бакалавриат</span>
+                                <i class="fas fa-arrow-right ml-auto text-gray-400 mt-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex justify-center mt-8">
+                    <button class="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-medium rounded-lg hover:opacity-90 transition-opacity">
+                        Пройти тест
+                    </button>
+                </div>
+            </div>
+            
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-xl p-6 shadow-lg hover-glow">
+                    <div class="w-12 h-12 bg-gradient-to-r from-red-500 to-orange-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-award text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Качественное образование</h3>
+                    <p class="text-gray-600 text-sm">
+                        Все программы аккредитованы и соответствуют современным требованиям рынка труда
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-lg hover-glow">
+                    <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-cyan-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-user text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Поддержка участников СВО</h3>
+                    <p class="text-gray-600 text-sm">
+                        Специальные условия и программы для участников специальной военной операции
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-lg hover-glow">
+                    <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-book text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Различные форматы</h3>
+                    <p class="text-gray-600 text-sm">
+                        Очные, заочные и онлайн-форматы обучения для удобства каждого участника
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-red-500 to-purple-600 flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">S</span>
+                        </div>
+                        <h3 class="text-xl font-bold rainbow-text">SVO Образование</h3>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Каталог образовательных программ для участников специальной военной операции
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Направления</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#it" class="text-gray-400 hover:text-white transition-colors">IT и цифровые технологии</a></li>
+                        <li><a href="#energy" class="text-gray-400 hover:text-white transition-colors">Энергетика и электросети</a></li>
+                        <li><a href="#construction" class="text-gray-400 hover:text-white transition-colors">Строительство и архитектура</a></li>
+                        <li><a href="#manufacturing" class="text-gray-400 hover:text-white transition-colors">Машиностроение</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Программы</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">СПО программы</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Бакалавриат</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Магистратура</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Краткосрочные курсы</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Контакты</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start space-x-2">
+                            <i class="fas fa-envelope mt-1 text-gray-400"></i>
+                            <span class="text-gray-400">info@svo-education.ru</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i class="fas fa-phone mt-1 text-gray-400"></i>
+                            <span class="text-gray-400">+7 (495) 123-45-67</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i class="fas fa-map-marker-alt mt-1 text-gray-400"></i>
+                            <span class="text-gray-400">Москва, ул. Примерная, 15</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i class="fas fa-globe mt-1 text-gray-400"></i>
+                            <span class="text-gray-400">www.svo-education.ru</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2025 Каталог образовательных программ для участников СВО. Все права защищены.</p>
+                <p class="mt-2 text-sm">
+                    Специально разработано для поддержки профессионального развития участников специальной военной операции
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // Dark mode toggle
+        document.getElementById('darkModeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark');
+            const icon = this.querySelector('i');
+            if (document.body.classList.contains('dark')) {
+                icon.className = 'fas fa-sun';
+                document.body.classList.add('bg-gray-900', 'text-white');
+                document.body.classList.remove('bg-gray-50', 'text-gray-900');
+            } else {
+                icon.className = 'fas fa-moon';
+                document.body.classList.remove('bg-gray-900', 'text-white');
+                document.body.classList.add('bg-gray-50', 'text-gray-900');
+            }
+        });
+        
+        // Accordion functionality
+        document.querySelectorAll('.accordion-toggle').forEach(button => {
+            button.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                const target = document.getElementById(targetId);
+                const parent = this.parentElement;
+                
+                parent.classList.toggle('accordion-active');
+                
+                // Rotate chevron icon
+                const icon = this.querySelector('i');
+                if (parent.classList.contains('accordion-active')) {
+                    icon.className = 'fas fa-chevron-up';
+                } else {
+                    icon.className = 'fas fa-chevron-down';
+                }
+            });
+        });
+        
+        // Scroll progress indicator
+        window.addEventListener('scroll', function() {
+            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPosition = window.scrollY;
+            const progress = (scrollPosition / totalHeight) * 100;
+            document.getElementById('section-indicator').style.width = progress + '%';
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

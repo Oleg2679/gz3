@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/src/assets/education-icon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Каталог образовательных программ для участников СВО</title>
+    <script type="module" src="/src/main.jsx"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+      
+      body {
+        font-family: 'Inter', sans-serif;
+        overflow-x: hidden;
+      }
+      
+      .rainbow-gradient-bg {
+        background: linear-gradient(45deg, #FF3B30, #FF9500, #FFCC00, #4CD964, #5AC8FA, #007AFF, #5856D6);
+        background-size: 200% 200%;
+        animation: rainbow-gradient 15s ease infinite;
+      }
+      
+      .dark .rainbow-gradient-bg {
+        background: linear-gradient(45deg, #ff6b6b, #ff9e4a, #ffd166, #5de06c, #6ee7ff, #4a9eff, #8a88ff);
+        background-size: 200% 200%;
+        animation: rainbow-gradient 15s ease infinite;
+      }
+      
+      .rainbow-text {
+        background: linear-gradient(45deg, #FF3B30, #FF9500, #FFCC00, #4CD964, #5AC8FA, #007AFF, #5856D6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      .section-indicator {
+        height: 5px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: linear-gradient(90deg, #FF3B30, #FF9500, #FFCC00, #4CD964, #5AC8FA, #007AFF, #5856D6);
+        z-index: 9999;
+        transition: width 0.3s ease;
+      }
+      
+      .sidebar-open {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      .sidebar-closed {
+        transform: translateX(-100%);
+        opacity: 0;
+        visibility: hidden;
+      }
+      
+      .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+      }
+      
+      .accordion-active .accordion-content {
+        max-height: 500px;
+      }
+      
+      .dark .dark\:bg-opacity-90 {
+        --tw-bg-opacity: 0.9;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <div id="root"></div>
+  </body>
+</html>
