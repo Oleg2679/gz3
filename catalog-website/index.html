@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог образовательных программ для участников СВО</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Радужная индикационная полоса -->
+    <div class="rainbow-bar">
+        <div class="rainbow-segment" style="background: #FF3B30;"></div>
+        <div class="rainbow-segment" style="background: #FF9500;"></div>
+        <div class="rainbow-segment" style="background: #FFCC00;"></div>
+        <div class="rainbow-segment" style="background: #4CD964;"></div>
+        <div class="rainbow-segment" style="background: #5AC8FA;"></div>
+        <div class="rainbow-segment" style="background: #007AFF;"></div>
+        <div class="rainbow-segment" style="background: #5856D6;"></div>
+        <div class="rainbow-segment" style="background: #FF3B30;"></div>
+        <div class="rainbow-segment" style="background: #FF9500;"></div>
+        <div class="rainbow-segment" style="background: #FFCC00;"></div>
+    </div>
+
+    <!-- Навигационное меню -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h2>Каталог профессий</h2>
+            </div>
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#catalog">Каталог</a></li>
+                <li><a href="#about">О проекте</a></li>
+                <li><a href="#contact">Контакты</a></li>
+                <li>
+                    <button id="theme-toggle" class="theme-btn">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Главная страница -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Каталог образовательных программ для участников СВО</h1>
+            <p>Откройте для себя лучшие образовательные программы для построения успешной карьеры в востребованных профессиях</p>
+            <a href="#catalog" class="cta-button">Начать подбор</a>
+        </div>
+        <div class="hero-animation">
+            <div class="rainbow-gradient"></div>
+        </div>
+    </section>
+
+    <!-- Поиск -->
+    <section class="search-section">
+        <div class="container">
+            <div class="rainbow-search-container">
+                <input type="text" id="rainbow-search" placeholder="Найти профессию или программу..." class="rainbow-search">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Каталог профессий -->
+    <section id="catalog" class="catalog">
+        <div class="container">
+            <h2>ТОП-10 востребованных профессий</h2>
+            <div class="profession-grid">
+                <!-- IT и цифровые технологии -->
+                <div class="profession-card" data-color="#FF3B30">
+                    <div class="card-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>IT и цифровые технологии</h3>
+                    <p>Программирование, кибербезопасность, искусственный интеллект</p>
+                    <a href="#it" class="btn" style="background: #FF3B30;">Подробнее</a>
+                </div>
+                
+                <!-- Энергетика и электросети -->
+                <div class="profession-card" data-color="#FF9500">
+                    <div class="card-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Энергетика и электросети</h3>
+                    <p>Электроэнергетика, возобновляемые источники энергии</p>
+                    <a href="#energy" class="btn" style="background: #FF9500;">Подробнее</a>
+                </div>
+                
+                <!-- Строительство и архитектура -->
+                <div class="profession-card" data-color="#FFCC00">
+                    <div class="card-icon">
+                        <i class="fas fa-city"></i>
+                    </div>
+                    <h3>Строительство и геоданные</h3>
+                    <p>Архитектура, геодезия, городское планирование</p>
+                    <a href="#construction" class="btn" style="background: #FFCC00;">Подробнее</a>
+                </div>
+                
+                <!-- Машиностроение -->
+                <div class="profession-card" data-color="#4CD964">
+                    <div class="card-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Машиностроение</h3>
+                    <p>Производственные технологии, робототехника</p>
+                    <a href="#machinery" class="btn" style="background: #4CD964;">Подробнее</a>
+                </div>
+                
+                <!-- Транспорт и беспилотные системы -->
+                <div class="profession-card" data-color="#5AC8FA">
+                    <div class="card-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Транспорт и беспилотные системы</h3>
+                    <p>Автомобильная промышленность, авиация, дроны</p>
+                    <a href="#transport" class="btn" style="background: #5AC8FA;">Подробнее</a>
+                </div>
+                
+                <!-- Нефтегазовая промышленность -->
+                <div class="profession-card" data-color="#007AFF">
+                    <div class="card-icon">
+                        <i class="fas fa-oil-can"></i>
+                    </div>
+                    <h3>Нефтегазовая промышленность</h3>
+                    <p>Добыча, переработка, недропользование</p>
+                    <a href="#oilgas" class="btn" style="background: #007AFF;">Подробнее</a>
+                </div>
+                
+                <!-- Здравоохранение и биотехнологии -->
+                <div class="profession-card" data-color="#5856D6">
+                    <div class="card-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Здравоохранение и биотехнологии</h3>
+                    <p>Медицина, фармацевтика, биотехнологии</p>
+                    <a href="#healthcare" class="btn" style="background: #5856D6;">Подробнее</a>
+                </div>
+                
+                <!-- Агро, ветеринария и пищевые технологии -->
+                <div class="profession-card" data-color="#FF3B30">
+                    <div class="card-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Агро и пищевые технологии</h3>
+                    <p>Сельское хозяйство, ветеринария, пищевая промышленность</p>
+                    <a href="#agro" class="btn" style="background: #FF3B30;">Подробнее</a>
+                </div>
+                
+                <!-- Образование и гуманитарные направления -->
+                <div class="profession-card" data-color="#FF9500">
+                    <div class="card-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Образование и гуманитарные науки</h3>
+                    <p>Педагогика, история, филология, психология</p>
+                    <a href="#education" class="btn" style="background: #FF9500;">Подробнее</a>
+                </div>
+                
+                <!-- Право, управление и коммуникации -->
+                <div class="profession-card" data-color="#FFCC00">
+                    <div class="card-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Право и управление</h3>
+                    <p>Юриспруденция, государственное управление, PR</p>
+                    <a href="#law" class="btn" style="background: #FFCC00;">Подробнее</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Разделы профессий -->
+    <section id="it" class="profession-section">
+        <div class="container">
+            <h2>IT и цифровые технологии</h2>
+            <div class="section-content">
+                <div class="programs-list">
+                    <h3>Доступные образовательные программы</h3>
+                    <div class="program-card">
+                        <h4>Программная инженерия</h4>
+                        <p>СПО: 2 года 6 месяцев | ВО: 4 года</p>
+                        <div class="tags">
+                            <span class="tag">Программирование</span>
+                            <span class="tag">Разработка ПО</span>
+                        </div>
+                    </div>
+                    <div class="program-card">
+                        <h4>Информационная безопасность</h4>
+                        <p>СПО: 3 года | ВО: 4 года</p>
+                        <div class="tags">
+                            <span class="tag">Кибербезопасность</span>
+                            <span class="tag">Защита данных</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-section">
+                    <h3>Учебные заведения</h3>
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <p>Интерактивная карта образовательных учреждений</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="energy" class="profession-section">
+        <div class="container">
+            <h2>Энергетика и электросети</h2>
+            <div class="section-content">
+                <div class="programs-list">
+                    <h3>Доступные образовательные программы</h3>
+                    <div class="program-card">
+                        <h4>Электроэнергетика</h4>
+                        <p>СПО: 3 года | ВО: 4 года</p>
+                        <div class="tags">
+                            <span class="tag">Электрические сети</span>
+                            <span class="tag">Энергосистемы</span>
+                        </div>
+                    </div>
+                    <div class="program-card">
+                        <h4>Возобновляемые источники энергии</h4>
+                        <p>СПО: 2 года 6 месяцев | ВО: 4 года</p>
+                        <div class="tags">
+                            <span class="tag">Солнечная энергетика</span>
+                            <span class="tag">Ветроэнергетика</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-section">
+                    <h3>Учебные заведения</h3>
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <p>Интерактивная карта образовательных учреждений</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Добавим остальные секции аналогично -->
+    <section id="construction" class="profession-section">
+        <div class="container">
+            <h2>Строительство и геоданные</h2>
+            <div class="section-content">
+                <div class="programs-list">
+                    <h3>Доступные образовательные программы</h3>
+                    <div class="program-card">
+                        <h4>Строительство</h4>
+                        <p>СПО: 2 года 6 месяцев | ВО: 4 года</p>
+                        <div class="tags">
+                            <span class="tag">Архитектура</span>
+                            <span class="tag">Проектирование</span>
+                        </div>
+                    </div>
+                    <div class="program-card">
+                        <h4>Геодезия и дистанционное зондирование</h4>
+                        <p>СПО: 3 года | ВО: 4 года</p>
+                        <div class="tags">
+                            <span class="tag">Геоинформационные системы</span>
+                            <span class="tag">Картография</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-section">
+                    <h3>Учебные заведения</h3>
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <p>Интерактивная карта образовательных учреждений</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="machinery" class="profession-section">
+        <div class="container">
+            <h2>Машиностроение и производственные технологии</h2>
+            <div class="section-content">
+                <div class="programs-list">
+                    <h3>Доступные образовательные программы</h3>
+                    <div class="program-card">
+                        <h4>Конструкторско-технологическое обеспечение машиностроительных производств</h4>
+                        <p>СПО: 3 года | ВО: 4 года</p>
+                        <div class="tags">
+                            <span class="tag">CAD/CAE</span>
+                            <span class="tag">Производственные технологии</span>
+                        </div>
+                    </div>
+                    <div class="program-card">
+                        <h4>Робототехника и автоматизация</h4>
+                        <p>СПО: 2 года 6 месяцев | ВО: 4 года</p>
+                        <div class="tags">
+                            <span class="tag">Промышленные роботы</span>
+                            <span class="tag">Автоматизация</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-section">
+                    <h3>Учебные заведения</h3>
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <p>Интерактивная карта образовательных учреждений</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="transport" class="profession-section">
+        <div class="container">
+            <h2>Транспорт и беспилотные системы</h2>
+            <div class="section-content">
+                <div class="programs-list">
+                    <h3>Доступные образовательные программы</h3>
+                    <div class="program-card">
+                        <h4>Эксплуатация транспортно-технологических машин и комплексов</h4>
+                        <p>СПО: 2 года 6 месяцев | ВО: 4 года</p>
+                        <div class="tags">
+                            <span class="tag">Автомобильная промышленность</span>
+                            <span class="tag">Транспортные системы</span>
+                        </div>
+                    </div>
+                    <div class="program-card">
+                        <h4>Беспилотные авиационные системы</h4>
+                        <p>СПО: 3 года | ВО: 4 года</p>
+                        <div class="tags">
+                            <span class="tag">Дроны</span>
+                            <span class="tag">Авиация</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-section">
+                    <h3>Учебные заведения</h3>
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <p>Интерактивная карта образовательных учреждений</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="oilgas" class="profession-section">
+        <div class="container">
+            <h2>Нефтегазовая промышленность и недропользование</h2>
+            <div class="section-content">
+                <div class="programs-list">
+                    <h3>Доступные образовательные программы</h3>
+                    <div class="program-card">
+                        <h4>Эксплуатация и ремонт оборудования нефтегазоперерабатывающих производств</h4>
+                        <p>СПО: 2 года 6 месяцев | ВО: 4 года</p>
+                        <div class="tags">
+                            <span class="tag">Нефтегазовая отрасль</span>
+                            <span class="tag">Оборудование</span>
+                        </div>
+                    </div>
+                    <div class="program-card">
+                        <h4>Геология и разработка нефтяных и газовых месторождений</h4>
+                        <p>СПО: 3 года | ВО: 4 года</p>
+                        <div class="tags">
+                            <span class="tag">Геология</span>
+                            <span class="tag">Недропользование</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-section">
+                    <h3>Учебные заведения</h3>
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <p>Интерактивная карта образовательных учреждений</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="healthcare" class="profession-section">
+        <div class="container">
+            <h2>Здравоохранение и биотехнологии</h2>
+            <div class="section-content">
+                <div class="programs-list">
+                    <h3>Доступные образовательные программы</h3>
+                    <div class="program-card">
+                        <h4>Лечебное дело</h4>
+                        <p>СПО: 3 года | ВО: 6 лет</p>
+                        <div class="tags">
+                            <span class="tag">Медицина</span>
+                            <span class="tag">Здравоохранение</span>
+                        </div>
+                    </div>
+                    <div class="program-card">
+                        <h4>Биотехнология</h4>
+                        <p>СПО: 2 года 6 месяцев | ВО: 4 года</p>
+                        <div class="tags">
+                            <span class="tag">Биомедицина</span>
+                            <span class="tag">Генетика</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-section">
+                    <h3>Учебные заведения</h3>
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <p>Интерактивная карта образовательных учреждений</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="agro" class="profession-section">
+        <div class="container">
+            <h2>Агро, ветеринария и пищевые технологии</h2>
+            <div class="section-content">
+                <div class="programs-list">
+                    <h3>Доступные образовательные программы</h3>
+                    <div class="program-card">
+                        <h4>Агроинженерия</h4>
+                        <p>СПО: 2 года 6 месяцев | ВО: 4 года</p>
+                        <div class="tags">
+                            <span class="tag">Сельское хозяйство</span>
+                            <span class="tag">Агротехнологии</span>
+                        </div>
+                    </div>
+                    <div class="program-card">
+                        <h4>Ветеринария</h4>
+                        <p>СПО: 3 года | ВО: 5 лет</p>
+                        <div class="tags">
+                            <span class="tag">Ветеринария</span>
+                            <span class="tag">Животноводство</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-section">
+                    <h3>Учебные заведения</h3>
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <p>Интерактивная карта образовательных учреждений</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="profession-section">
+        <div class="container">
+            <h2>Образование и гуманитарные направления</h2>
+            <div class="section-content">
+                <div class="programs-list">
+                    <h3>Доступные образовательные программы</h3>
+                    <div class="program-card">
+                        <h4>Педагогическое образование</h4>
+                        <p>СПО: 3 года | ВО: 4 года</p>
+                        <div class="tags">
+                            <span class="tag">Педагогика</span>
+                            <span class="tag">Образование</span>
+                        </div>
+                    </div>
+                    <div class="program-card">
+                        <h4>Филология</h4>
+                        <p>СПО: 2 года 6 месяцев | ВО: 4 года</p>
+                        <div class="tags">
+                            <span class="tag">Литература</span>
+                            <span class="tag">Языки</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-section">
+                    <h3>Учебные заведения</h3>
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <p>Интерактивная карта образовательных учреждений</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="law" class="profession-section">
+        <div class="container">
+            <h2>Право, управление и коммуникации</h2>
+            <div class="section-content">
+                <div class="programs-list">
+                    <h3>Доступные образовательные программы</h3>
+                    <div class="program-card">
+                        <h4>Юриспруденция</h4>
+                        <p>СПО: 2 года 6 месяцев | ВО: 4 года</p>
+                        <div class="tags">
+                            <span class="tag">Право</span>
+                            <span class="tag">Юриспруденция</span>
+                        </div>
+                    </div>
+                    <div class="program-card">
+                        <h4>Государственное и муниципальное управление</h4>
+                        <p>СПО: 3 года | ВО: 4 года</p>
+                        <div class="tags">
+                            <span class="tag">Управление</span>
+                            <span class="tag">Госслужба</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-section">
+                    <h3>Учебные заведения</h3>
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <p>Интерактивная карта образовательных учреждений</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Профориентационный тест -->
+    <section class="prof-test-section">
+        <div class="container">
+            <h2>Пройдите профориентационный тест</h2>
+            <p>Определите наиболее подходящие для вас профессии и образовательные программы</p>
+            <button class="test-btn">Начать тестирование</button>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Каталог профессий</h3>
+                    <p>Проект по поддержке участников СВО в выборе перспективной профессии</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Быстрые ссылки</h4>
+                    <ul>
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#catalog">Каталог</a></li>
+                        <li><a href="#about">О проекте</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <p>support@catalog.ru</p>
+                    <p>+7 (XXX) XXX-XX-XX</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Каталог образовательных программ. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
